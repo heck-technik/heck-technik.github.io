@@ -95,7 +95,28 @@ section.soft { background: var(--bg-soft); border-top: 1px solid var(--line); bo
 .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
 
 .photos { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-auto-rows: 260px; gap: 16px; margin-bottom: 64px; }
-.photos img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+.photos figure { margin: 0; position: relative; border-radius: var(--radius); overflow: hidden; }
+.photos img { width: 100%; height: 100%; object-fit: cover; }
+.photos figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 16px 12px;
+  background: linear-gradient(180deg, transparent, rgba(11,31,51,.78));
+  color: #fff; font-size: 14px; font-weight: 600;
+}
+
+#partner + #kontakt { padding-top: 0; }
+.partner-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: start; }
+.partner-grid h3 { font-size: 20px; color: var(--navy); margin: 0 0 16px; }
+.flow { list-style: none; counter-reset: f; margin: 0; padding: 0; }
+.flow li { counter-increment: f; position: relative; padding: 0 0 18px 46px; color: var(--muted); }
+.flow li::before {
+  content: counter(f); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--navy); color: #fff; font-weight: 700; font-size: 14px; display: grid; place-items: center;
+}
+.flow strong { color: var(--ink); }
+.offer-box { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+.checklist { list-style: none; margin: 0; padding: 0; }
+.checklist li { position: relative; padding: 0 0 10px 28px; color: var(--ink); }
+.checklist li::before { content: ""; position: absolute; left: 2px; top: 7px; width: 12px; height: 7px; border-left: 2.5px solid var(--accent); border-bottom: 2.5px solid var(--accent); transform: rotate(-45deg); }
 
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .step { border-top: 2px solid var(--navy); padding-top: 20px; }
@@ -140,6 +161,9 @@ footer .links { display: flex; gap: 20px; align-items: flex-start; }
   .cards { grid-template-columns: repeat(2, 1fr); }
   .hero .wrap { grid-template-columns: 1fr; padding-top: 56px; padding-bottom: 56px; gap: 32px; }
   .hero-art { max-width: 460px; }
+  .nav { gap: 14px; }
+  .nav a { font-size: 14px; white-space: nowrap; }
+  .brand-sub { display: none; }
 }
 @media (max-width: 680px) {
   body { font-size: 16px; }
@@ -155,8 +179,10 @@ footer .links { display: flex; gap: 20px; align-items: flex-start; }
   section { padding: 64px 0; }
   .cards, .steps, .people { grid-template-columns: 1fr; }
   .photos { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; gap: 10px; margin-bottom: 40px; }
-  .photos img:first-child { height: 200px; }
-  .photos img:first-child { grid-column: 1 / -1; }
+  .photos figure:first-child { grid-column: 1 / -1; height: 200px; }
+  .photos figcaption { font-size: 12.5px; padding: 22px 10px 8px; }
+  .partner-grid { grid-template-columns: 1fr; gap: 28px; }
+  .offer-box { padding: 22px; }
   .contact-box { padding: 26px 22px; }
   .hero p.lead { font-size: 17px; }
   .hero .wrap { gap: 24px; padding-bottom: 40px; }
